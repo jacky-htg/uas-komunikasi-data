@@ -1,0 +1,21 @@
+syntax = "proto3";
+package uas_komdat;
+
+option go_package = "uas_komdat/pb/users;users";
+
+message User {
+  string id = 1;
+  string name = 2;
+  string photo = 3;
+}
+
+message Users {
+  repeated User user = 1;
+}
+
+message EmptyMessage {}
+
+service UserService {
+  rpc List(EmptyMessage) returns (Users) {}
+  rpc ListStreaming(EmptyMessage) returns (stream User) {}
+}
